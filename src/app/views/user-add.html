@@ -1,0 +1,16 @@
+<h1>{{titulo}}</h1>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <label for="name">Nombre</label>
+    <p><input type="text" class="name" formControlName="name" [(ngModel)]="user.name"></p>
+     <label for="email">Email</label>
+    <p>
+    <input type="email" class="email" formControlName="email" [(ngModel)]="user.email"></p>
+    <label for="pass">Password</label>
+    <p>
+    <input type="password" class="pass" formControlName="password" [(ngModel)]="user.password">
+    </p>  
+    <p>
+        <input type="file" placeholder="Subir imagen" (change)="fileChangeEvent($event)">
+    </p>     
+    <input type="submit" value="Agregar" [disabled]="userForm.status=='INVALID'">
+</form>

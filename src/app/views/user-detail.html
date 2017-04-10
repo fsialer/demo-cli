@@ -1,0 +1,10 @@
+<h1>Usuario </h1>
+<li class="loading" *ngIf="loading == 'show'" >
+        <img src="../../assets/images/loading.gif" alt="">
+</li>
+
+<div *ngIf="user">
+
+    <p> Nombre:{{user.name}}</p>
+    <p>Email:{{user.email}}</p>
+</div>

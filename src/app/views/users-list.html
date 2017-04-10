@@ -1,0 +1,23 @@
+<h1>Lista de Alumnos</h1>
+<ul>
+    <li class="loading" *ngIf="loading == 'show'" >
+        <img src="../../assets/images/loading.gif" alt="">
+    </li>
+</ul>
+<table>
+    <thead>
+        <th>ID</th>
+        <th>NOMBRES</th>
+        <th>EMAILS</th>
+    </thead>
+    <tbody >
+        <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td><a [routerLink]="['/user',{id:user.id}]">Ver</a></td>
+            <td><a [routerLink]="['/edit',{id:user.id}]">Editar</a></td>
+            <td><a [routerLink]="['/delete',{id:user.id}]">Eliminar</a></td>
+        </tr>
+    </tbody>
+</table>
