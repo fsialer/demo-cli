@@ -6,6 +6,6 @@ export class User{
         public email:string,
         public password:string,
         //public image:Image
-        public image:string
+        //public image:string
     ){}
 }

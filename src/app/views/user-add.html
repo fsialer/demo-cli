@@ -9,8 +9,8 @@
     <p>
     <input type="password" class="pass" formControlName="password" [(ngModel)]="user.password">
     </p>  
-    <p>
+    <!--<p>
         <input type="file" placeholder="Subir imagen" (change)="fileChangeEvent($event)">
-    </p>     
-    <input type="submit" value="Agregar" [disabled]="userForm.status=='INVALID'">
+    </p>  -->   
+    <input type="submit" value="{{titulo}}" [disabled]="userForm.status=='INVALID'">
 </form>

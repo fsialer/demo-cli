@@ -40,15 +40,14 @@ export class UserEditComponent implements OnInit {
                 this.errorMessage=<any>error;
             }
         );
-         this.router.navigate(['/']);
+        this.router.navigate(['/']);
     }
     ngOnInit() {
         this.user=new User(
             parseInt(this.route.snapshot.params['id']),
             this.route.snapshot.params['name'],
             this.route.snapshot.params['email'],
-            this.route.snapshot.params['password'],
-            null
+            this.route.snapshot.params['password']
         );
         this.getUser();
      }

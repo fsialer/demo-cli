@@ -49,12 +49,11 @@ export class UserAddComponent implements OnInit {
             0,
             this.route.snapshot.params['name'],
             this.route.snapshot.params['email'],
-            this.route.snapshot.params['password'],
-            null
+            this.route.snapshot.params['password']
         );
     }
 
-    fileChangeEvent(fileInput:any) {
+   /* fileChangeEvent(fileInput:any) {
         this.filesToUpload=<Array<File>>fileInput.target.files;
         
         this.makeFileRequest("http://localhost:8000/images/avatar/",[],this.filesToUpload).then((result)=>{
@@ -63,8 +62,8 @@ export class UserAddComponent implements OnInit {
             console.log(error);
         });
     }
-
-    makeFileRequest(url: string, params: Array<string>, files: Array<File>) {
+*/
+/*    makeFileRequest(url: string, params: Array<string>, files: Array<File>) {
         return new Promise((resolve, reject) => {
             var formData: any = new FormData();
             var xhr = new XMLHttpRequest();
@@ -85,5 +84,5 @@ export class UserAddComponent implements OnInit {
             xhr.send(formData);
 
         });
-    }
+    }*/
 }
