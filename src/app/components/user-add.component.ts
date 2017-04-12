@@ -10,6 +10,11 @@ import {Http,Response,Headers,URLSearchParams} from "@angular/http";
     providers: [UserService]
 })
 export class UserAddComponent implements OnInit {
+    public nameU:string;
+    public emailU:string;
+    public passwordU:string;
+
+
     userForm: FormGroup;
     titulo: string = "Agregar Usuario";
     public user: User;
@@ -45,11 +50,17 @@ export class UserAddComponent implements OnInit {
         this.router.navigate(['/']);
     }
     ngOnInit() {
+        this.route.params.subscribe(params=>{
+             this.nameU=params['name'];
+             this.emailU=params['email'];
+             this.passwordU=params['password'];
+             //console.log(this.idUser);
+         });
         this.user = new User(
             0,
-            this.route.snapshot.params['name'],
-            this.route.snapshot.params['email'],
-            this.route.snapshot.params['password']
+            this.nameU,
+            this.emailU,
+            this.passwordU
         );
     }
 
@@ -65,24 +76,24 @@ export class UserAddComponent implements OnInit {
 */
 /*    makeFileRequest(url: string, params: Array<string>, files: Array<File>) {
         return new Promise((resolve, reject) => {
-            var formData: any = new FormData();
-            var xhr = new XMLHttpRequest();
-            for (var i = 0; i < files.length; i++) {
-                formData.append("uploads[]" + files[i], files[i].name);
-            }
+				var formData: any = new FormData();
+				var xhr = new XMLHttpRequest();
 
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4) {
-                    if (xhr.status == 200) {
-                        resolve(JSON.parse(xhr.response));
-                    } else {
-                        reject(xhr.response);
-                    }
-                }
-            }
-            xhr.open("POST", url, true);
-            xhr.send(formData);
+				for(var i = 0; i < files.length; i++){
+					formData.append("uploads[]", files[i], files[i].name);
+				}
 
-        });
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == 4){
+						if(xhr.status == 200){
+							resolve(JSON.parse(xhr.response));
+						}else{
+							reject(xhr.response);
+						}
+					}
+				}
+				xhr.open("POST", url, true);
+				xhr.send(formData);
+			});
     }*/
 }

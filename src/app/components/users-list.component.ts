@@ -24,8 +24,7 @@ export class UserListComponent  implements OnInit{
     getUsers(){
     this._userService.getUsers()
     .subscribe(
-            users=>{
-                this.users=null;
+            users=>{                
                 this.users=users.data;
                 console.log(this.users);
             this.loading = 'hide'

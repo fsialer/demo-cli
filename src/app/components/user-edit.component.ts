@@ -9,6 +9,11 @@ import { FormBuilder, FormGroup,Validators } from '@angular/forms';
     providers:[UserService]
 })
 export class UserEditComponent implements OnInit {
+    public idUser:string;
+    public nameU:string;
+    public emailU:string;
+    public passwordU:string;
+
     userForm:FormGroup;
     titulo:string="Editar Usuario";
      public user:User;
@@ -31,8 +36,14 @@ export class UserEditComponent implements OnInit {
         });
     }
     onSubmit(){
-        let id:string=this.route.snapshot.params['id'];
-        this._userService.editUser(id,this.user).subscribe(
+        this.route.params.subscribe(params=>{
+             this.nameU=params['name'];
+             this.emailU=params['email'];
+             this.passwordU=params['password'];
+             console.log(this.idUser);
+         });
+        //let id:string=this.route.snapshot.params['id'];
+        this._userService.editUser(this.idUser,this.user).subscribe(
             user=>{
                 this.status=user.status;
             },
@@ -44,17 +55,22 @@ export class UserEditComponent implements OnInit {
     }
     ngOnInit() {
         this.user=new User(
-            parseInt(this.route.snapshot.params['id']),
-            this.route.snapshot.params['name'],
-            this.route.snapshot.params['email'],
-            this.route.snapshot.params['password']
+            parseInt(this.idUser),
+            this.nameU,
+            this.emailU,
+            this.passwordU
         );
         this.getUser();
      }
 
      getUser(){
-         let id:string=this.route.snapshot.params['id'];
-         this._userService.getUser(id).subscribe(
+        this.route.params.subscribe(params=>{
+             this.idUser=params['id'];
+             console.log(this.idUser);
+         });
+         
+         //let id:string=this.route.snapshot.params['id'];
+         this._userService.getUser(this.idUser).subscribe(
              user=>{
                  if(user.status=='success'){
                     this.user=user.data

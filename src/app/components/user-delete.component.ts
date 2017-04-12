@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup,Validators } from '@angular/forms';
     providers:[UserService]
 })
 export class UserDeleteComponent implements OnInit {
-
+    public idUser:string;
      public user:User;
         public errorMessage:string;
         public status:string;
@@ -27,8 +27,13 @@ export class UserDeleteComponent implements OnInit {
      }
 
      deleteUser(){
-         let id:string=this.route.snapshot.params['id'];
-         this._userService.deteleUser(id).subscribe(
+          this.route.params.subscribe(params=>{
+             this.idUser=params['id'];
+             
+             console.log(this.idUser);
+         });
+         //let id:string=this.route.snapshot.params['id'];
+         this._userService.deteleUser(this.idUser).subscribe(
              user=>{
                  if(user.status=='success'){
                     this.user=user.data

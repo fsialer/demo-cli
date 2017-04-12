@@ -8,6 +8,8 @@ import { User } from "../models/user";
     providers:[UserService]
 })
 export class UserDetailComponent implements OnInit {
+    public idUser:string;
+
     public loading:any;;
     errorMessage: string;
     user:User[];
@@ -23,8 +25,12 @@ export class UserDetailComponent implements OnInit {
      }
 
      getUser(){
-         let id:string=this.route.snapshot.params['id'];
-         this._userService.getUser(id).subscribe(
+         this.route.params.subscribe(params=>{
+             this.idUser=params['id'];
+             console.log(this.idUser);
+         });
+         //let id:string=this.route.snapshot.params['id'];
+         this._userService.getUser(this.idUser).subscribe(
              user=>{{
                  if(user.status=='success'){
                     this.user=user.data;
