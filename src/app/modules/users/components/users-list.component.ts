@@ -1,10 +1,10 @@
 import { Component,OnInit } from '@angular/core';
-import {UserService} from '../services/users.service';
-import { User } from "../models/user";
+import {UserService} from '../../../services/users.service';
+import { User } from "../../../models/user";
 @Component({
   selector: 'list-users',
   templateUrl: '../../views/users-list.html',
-  providers:[UserService]
+  
 })
 export class UserListComponent  implements OnInit{ 
     users:User[];

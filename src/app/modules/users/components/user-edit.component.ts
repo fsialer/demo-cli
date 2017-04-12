@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../services/users.service';
+import {UserService} from '../../../services/users.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { User } from "../models/user";
+import { User } from "../../../models/user";
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 @Component({
     selector: 'restarante-edit',
-    templateUrl: '../../views/user-add.html',
-    providers:[UserService]
+    templateUrl: '../../views/user-add.html'
 })
 export class UserEditComponent implements OnInit {
     public idUser:string;
@@ -51,7 +50,7 @@ export class UserEditComponent implements OnInit {
                 this.errorMessage=<any>error;
             }
         );
-        this.router.navigate(['/']);
+        this.router.navigate(['/users']);
     }
     ngOnInit() {
         this.user=new User(

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../services/users.service';
+import {UserService} from '../../../services/users.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { User } from '../models/user';
+import { User } from '../../../models/user';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 @Component({
-    template:'',
-    providers:[UserService]
+    template:''
+
 })
 export class UserDeleteComponent implements OnInit {
     public idUser:string;
@@ -23,7 +23,7 @@ export class UserDeleteComponent implements OnInit {
     
     ngOnInit() {
         this.deleteUser();
-        this.router.navigate(['/']);
+        this.router.navigate(['/users']);
      }
 
      deleteUser(){

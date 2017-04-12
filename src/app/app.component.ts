@@ -1,5 +1,5 @@
-import { Component,Pipe,PipeTransform } from '@angular/core';
-import {PruebasPipe} from './pipes/pruebas.pipe';
+import { Component } from '@angular/core';
+
 @Component({
   selector: 'my-app',
   templateUrl: './views/home.html',

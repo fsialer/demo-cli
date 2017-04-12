@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/users.service';
+import { UserService } from '../../../services/users.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { User } from '../models/user';
+import { User } from '../../../models/user';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Http,Response,Headers,URLSearchParams} from "@angular/http";
 @Component({
     selector: 'restarante-add',
-    templateUrl: '../../views/user-add.html',
-    providers: [UserService]
+    templateUrl: '../../views/user-add.html'
 })
 export class UserAddComponent implements OnInit {
     public nameU:string;
@@ -47,7 +46,7 @@ export class UserAddComponent implements OnInit {
                 this.errorMessage = <any>error;
             }
         );
-        this.router.navigate(['/']);
+        this.router.navigate(['users']);
     }
     ngOnInit() {
         this.route.params.subscribe(params=>{

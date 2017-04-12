@@ -1,18 +1,19 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {UserListComponent} from './components/users-list.component';
 import { AppComponent }  from './app.component';
 import { HttpModule,JsonpModule  } from '@angular/http';
 import {AppRoutingModule} from './app-routing.module';
+import { Router } from '@angular/router';
+import {UserModule} from './modules/users/user.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { UserDetailComponent } from './components/user-detail.component';
-import {UserAddComponent} from './components/user-add.component';
-import {UserEditComponent} from './components/user-edit.component';
-import {UserDeleteComponent} from './components/user-delete.component';
 @NgModule({
-  imports:      [ BrowserModule, HttpModule,JsonpModule, AppRoutingModule,ReactiveFormsModule, FormsModule],
-  declarations: [ AppComponent,UserListComponent, UserDetailComponent,UserAddComponent,UserEditComponent,UserDeleteComponent],
+  imports:      [ BrowserModule, HttpModule,JsonpModule, AppRoutingModule,ReactiveFormsModule, FormsModule,UserModule],
+  declarations: [AppComponent ],
   bootstrap:    [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(router: Router) {
+    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+  }
+}

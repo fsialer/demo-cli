@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../services/users.service';
+import {UserService} from '../../../services/users.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { User } from "../models/user";
+import { User } from "../../../models/user";
 @Component({
     selector: 'user-detail',
-    templateUrl: '../../views/user-detail.html',
-    providers:[UserService]
+    templateUrl: '../../views/user-detail.html'
 })
 export class UserDetailComponent implements OnInit {
     public idUser:string;
